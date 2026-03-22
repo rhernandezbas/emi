@@ -4,7 +4,7 @@ services:
     container_name: emi-app
     restart: unless-stopped
     ports:
-      - "4232:3000"
+      - "4233:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
