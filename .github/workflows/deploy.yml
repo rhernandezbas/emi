@@ -1,0 +1,29 @@
+name: Deploy EMI
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, vps]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t emi-app:latest .
+          docker tag emi-app:latest emi-app:${{ github.sha }}
+
+      - name: Deploy
+        run: |
+          cd /opt/apps/emi
+          docker compose up -d --force-recreate emi-app
+
+      - name: Verificar salud
+        run: |
+          sleep 5
+          docker ps | grep emi-app
+          docker logs emi-app --tail 20
