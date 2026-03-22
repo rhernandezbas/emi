@@ -3,31 +3,59 @@ name: Deploy EMI
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, vps]
+    runs-on: self-hosted
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Sync files to deploy dir
-        run: |
-          mkdir -p /opt/apps/emi
-          rsync -a --delete \
-            --exclude='.git' \
-            --exclude='node_modules' \
-            --exclude='.env' \
-            ./ /opt/apps/emi/
-
       - name: Deploy
         run: |
-          cd /opt/apps/emi
-          docker compose --env-file .env up -d --build
+          PROJECT_DIR="/opt/apps/emi"
+          mkdir -p $PROJECT_DIR
+          cd $PROJECT_DIR
 
-      - name: Verificar salud
-        run: |
-          sleep 5
-          docker ps | grep emi-app
-          docker logs emi-app --tail 20
+          # Actualizar código
+          if [ ! -d ".git" ]; then
+            echo "Clonando repositorio..."
+            git clone https://${{ secrets.GH_TOKEN }}@github.com/rhernandezbas/emi.git .
+          else
+            echo "Actualizando repositorio..."
+            git fetch origin
+            git reset --hard origin/master
+          fi
+
+          # Detener contenedor app (preservar DB)
+          echo "Deteniendo emi-app..."
+          docker compose down emi-app 2>&1 || true
+          docker ps -a | grep emi-app | awk '{print $1}' | xargs -r docker rm -f 2>&1 || true
+
+          # Build y deploy
+          echo "Construyendo imagen..."
+          docker compose build --no-cache emi-app 2>&1
+
+          if [ $? -ne 0 ]; then
+            echo "Error en el build"
+            exit 1
+          fi
+
+          echo "Iniciando contenedores..."
+          docker compose --env-file .env up -d 2>&1
+
+          if [ $? -ne 0 ]; then
+            echo "Error al iniciar contenedores"
+            docker compose logs --tail=50 emi-app
+            exit 1
+          fi
+
+          echo "Esperando que el servicio esté listo..."
+          sleep 10
+
+          echo "Estado de contenedores:"
+          docker compose ps -a
+
+          echo "Ultimos logs:"
+          docker compose logs --tail=20 emi-app
+
+          echo "Deploy completado"
