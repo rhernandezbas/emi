@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja de Cartas — Skarlet Daniela 🎂</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ── Pantalla de acceso ── -->
+    <div id="accesoScreen" class="acceso-screen">
+      <div class="header">
+        <h1>🎂 Caja de Cartas</h1>
+        <p>Seleccioná cómo querés ingresar</p>
+      </div>
+      <div class="acceso-opciones">
+        <button class="btn" id="btnSkarlet">Soy Skarlet 🎀</button>
+        <button class="btn" id="btnEmily">Soy Emily (organizadora)</button>
+      </div>
+
+      <!-- Formulario Skarlet -->
+      <div class="acceso-form" id="formSkarlet">
+        <h2 style="margin-bottom:16px;">¡Hola Skarlet! 🎉</h2>
+        <div class="form-group">
+          <label>Tu nombre completo</label>
+          <input type="text" id="skarletNombre" placeholder="Skarlet Daniela" />
+        </div>
+        <div class="form-group">
+          <label>Tu fecha de nacimiento</label>
+          <input type="date" id="skarletFecha" />
+        </div>
+        <p id="skarletError" style="color:#e87fa0;margin:8px 0;display:none;">Datos incorrectos, intentá de nuevo.</p>
+        <button class="btn" id="btnSkarletLogin">Abrir mi caja 💌</button>
+      </div>
+
+      <!-- Formulario Emily/organizadora -->
+      <div class="acceso-form" id="formOrganizadora">
+        <h2 style="margin-bottom:16px;">Acceso organizadora 🌸</h2>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="emilyPassword" placeholder="••••••" />
+        </div>
+        <p id="emilyError" style="color:#e87fa0;margin:8px 0;display:none;">Contraseña incorrecta.</p>
+        <button class="btn" id="btnEmilyLogin">Ingresar</button>
+      </div>
+    </div>
+
+    <!-- ── Caja de sobres (festejada) ── -->
+    <div id="cajaSobres" style="display:none;">
+      <div class="header">
+        <h1>💌 Tus cartas</h1>
+        <p id="cajaBienvenida"></p>
+      </div>
+      <div class="sobres-grid" id="sobresGrid"></div>
+
+      <!-- Sobre abierto -->
+      <div class="sobre-abierto" id="sobreAbierto">
+        <h3 id="sobreNombre"></h3>
+        <p class="mensaje-texto" id="sobreMensaje"></p>
+        <img class="foto-carta" id="sobreFoto" src="" alt="Foto adjunta" style="display:none;" />
+        <button class="btn btn-cerrar" id="btnCerrar">✕ Cerrar sobre</button>
+      </div>
+    </div>
+
+    <!-- ── Panel organizadora (Emily) ── -->
+    <div id="panelOrganizadora" class="panel-organizadora" style="display:none;">
+      <div class="header">
+        <h1>🌸 Panel organizadora</h1>
+        <p>Lista de participantes que enviaron cartas</p>
+      </div>
+      <table id="tablaParticipantes">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Color sobre</th>
+            <th>Foto</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+      </table>
+      <p id="tablaVacia" style="text-align:center;margin-top:24px;color:#a06070;display:none;">
+        Aún no hay cartas enviadas.
+      </p>
+    </div>
+
+  </div>
+
+  <script src="assets/js/caja.js"></script>
+</body>
+</html>

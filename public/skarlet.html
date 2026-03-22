@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja de Cartas — Skarlet Daniela 🎀</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ── Pantalla de acceso ── -->
+    <div id="accesoScreen" class="acceso-screen">
+      <div class="header">
+        <h1>🎂 Caja de Cartas</h1>
+        <p>¡Hola Skarlet! Ingresá para ver tus cartas 🎀</p>
+      </div>
+      <div class="acceso-form visible" id="formSkarlet">
+        <div class="form-group">
+          <label>Tu nombre completo</label>
+          <input type="text" id="skarletNombre" placeholder="Skarlet Daniela" />
+        </div>
+        <div class="form-group">
+          <label>Tu fecha de nacimiento</label>
+          <input type="date" id="skarletFecha" />
+        </div>
+        <p id="skarletError" style="color:#e87fa0;margin:8px 0;display:none;">Datos incorrectos, intentá de nuevo.</p>
+        <button class="btn" id="btnSkarletLogin">Abrir mi caja 💌</button>
+      </div>
+    </div>
+
+    <!-- ── Caja de sobres ── -->
+    <div id="cajaSobres" style="display:none;">
+      <div class="header">
+        <h1>💌 Tus cartas</h1>
+        <p>¡Feliz cumpleaños! Hacé clic en cada sobre para abrirlo 🎀</p>
+      </div>
+      <div class="sobres-grid" id="sobresGrid"></div>
+
+      <!-- Sobre abierto -->
+      <div class="sobre-abierto" id="sobreAbierto">
+        <h3 id="sobreNombre"></h3>
+        <p class="mensaje-texto" id="sobreMensaje"></p>
+        <img class="foto-carta" id="sobreFoto" src="" alt="Foto adjunta" style="display:none;" />
+        <button class="btn btn-cerrar" id="btnCerrar">✕ Cerrar sobre</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/skarlet.js"></script>
+</body>
+</html>

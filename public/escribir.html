@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escribir carta — Caja de Cartas</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>💌 Escribir una carta</h1>
+      <p>Deja un mensaje especial para Skarlet Daniela</p>
+    </div>
+
+    <!-- Formulario principal -->
+    <div class="form-card" id="formContainer">
+      <!-- Envía datos a POST /api/cartas vía fetch en escribir.js -->
+      <form id="cartaForm" enctype="multipart/form-data">
+
+        <!-- Nombre -->
+        <div class="form-group">
+          <label for="nombre_remitente">Tu nombre *</label>
+          <input
+            type="text"
+            id="nombre_remitente"
+            name="nombre_remitente"
+            placeholder="¿Cómo te llamas?"
+            required
+          />
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group">
+          <label for="mensaje">Tu mensaje *</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="5"
+            placeholder="Escribe tu mensaje aquí..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Selector de color de sobre -->
+        <div class="form-group">
+          <label>Color del sobre *</label>
+          <input type="hidden" id="color_sobre" name="color_sobre" required />
+          <div class="color-selector" role="group" aria-label="Selecciona el color del sobre">
+            <div class="color-option color-rosa"      data-color="rosa"       title="Rosa"       tabindex="0" role="button" aria-label="Rosa"></div>
+            <div class="color-option color-lila"      data-color="lila"       title="Lila"       tabindex="0" role="button" aria-label="Lila"></div>
+            <div class="color-option color-menta"     data-color="menta"      title="Menta"      tabindex="0" role="button" aria-label="Menta"></div>
+            <div class="color-option color-celeste"   data-color="celeste"    title="Celeste"    tabindex="0" role="button" aria-label="Celeste"></div>
+            <div class="color-option color-amarillo"  data-color="amarillo"   title="Amarillo"   tabindex="0" role="button" aria-label="Amarillo"></div>
+            <div class="color-option color-melocoton" data-color="melocoton"  title="Melocotón"  tabindex="0" role="button" aria-label="Melocotón"></div>
+          </div>
+          <p id="colorError" style="color:#e87fa0;font-size:0.85rem;margin-top:6px;display:none;">
+            Por favor selecciona un color de sobre.
+          </p>
+        </div>
+
+        <!-- Foto opcional -->
+        <div class="form-group">
+          <label for="foto">Foto (opcional)</label>
+          <input type="file" id="foto" name="foto" accept="image/*" />
+          <img id="fotoPreview" class="foto-preview" src="" alt="Vista previa de la foto" />
+        </div>
+
+        <button type="submit" class="btn">Enviar carta 💌</button>
+
+      </form>
+    </div>
+
+    <!-- Confirmación -->
+    <div class="confirmacion" id="confirmacion">
+      <div class="emoji">🎉</div>
+      <h2>¡Gracias!</h2>
+      <p>Tu carta fue enviada con amor.<br>Skarlet Daniela la recibirá muy pronto 💕</p>
+    </div>
+  </div>
+
+  <script src="assets/js/escribir.js"></script>
+</body>
+</html>
