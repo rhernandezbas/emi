@@ -1,13 +1,50 @@
 services:
-  app:
-    build: .
-    container_name: caja-cartas
+  emi-app:
+    image: emi-app:latest
+    container_name: emi-app
     restart: unless-stopped
     ports:
-      - "3000:3000"
-    env_file:
-      - .env
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "4232:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_HOST=emi-db
+      - DB_PORT=3306
+      - DB_NAME=emi
+      - DB_USER=emi
+      - DB_PASSWORD=${DB_PASSWORD}
+      - BIRTHDAY_NAME=${BIRTHDAY_NAME}
+      - BIRTHDAY_DATE=${BIRTHDAY_DATE}
+      - EMILY_PASSWORD=${EMILY_PASSWORD}
+    depends_on:
+      emi-db:
+        condition: service_healthy
+    networks:
+      - emi-net
+
+  emi-db:
+    image: mysql:8
+    container_name: emi-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=emi
+      - MYSQL_USER=emi
+      - MYSQL_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./uploads:/app/uploads
+      - emi-db-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - emi-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  emi-net:
+    driver: bridge
+
+volumes:
+  emi-db-data:

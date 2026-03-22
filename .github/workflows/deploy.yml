@@ -17,10 +17,16 @@ jobs:
           docker build -t emi-app:latest .
           docker tag emi-app:latest emi-app:${{ github.sha }}
 
+      - name: Sync config to deploy dir
+        run: |
+          mkdir -p /opt/apps/emi
+          cp docker-compose.yml /opt/apps/emi/docker-compose.yml
+          cp sql/schema.sql /opt/apps/emi/init.sql
+
       - name: Deploy
         run: |
           cd /opt/apps/emi
-          docker compose up -d --force-recreate emi-app
+          docker compose --env-file .env up -d --force-recreate emi-app
 
       - name: Verificar salud
         run: |
