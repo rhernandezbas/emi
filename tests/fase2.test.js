@@ -91,27 +91,27 @@ describe('2.3 GET /api/cartas — protegido', () => {
 // 2.4 POST /api/auth/skarlet
 // ─────────────────────────────────────────────
 describe('2.4 POST /api/auth/skarlet', () => {
-  test('retorna { ok: true, rol: "festejada" } con credenciales correctas', async () => {
+  test('retorna { ok: true, rol: "festejada" } con clave correcta', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: 'Skarlet Daniela', fecha: '2003-03-25' });
+      .send({ clave: process.env.SKARLET_CLAVE || '4567' });
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(res.body.rol).toBe('festejada');
   });
 
-  test('retorna { ok: false } con nombre incorrecto', async () => {
+  test('retorna { ok: false } con clave incorrecta', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: 'Otro', fecha: '2003-03-25' });
+      .send({ clave: '0000' });
     expect(res.status).toBe(401);
     expect(res.body.ok).toBe(false);
   });
 
-  test('retorna { ok: false } con fecha incorrecta', async () => {
+  test('retorna { ok: false } con clave vacía', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: 'Skarlet Daniela', fecha: '2000-01-01' });
+      .send({ clave: '' });
     expect(res.status).toBe(401);
     expect(res.body.ok).toBe(false);
   });

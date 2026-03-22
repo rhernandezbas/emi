@@ -33,16 +33,16 @@ describe('Fix 1: GET / retorna página de inicio', () => {
 
 // ── Fase 2: Credenciales de Skarlet desde .env ──
 describe('Fix 2: auth.js usa variables de entorno para credenciales de Skarlet', () => {
-  test('SKARLET_NOMBRE usa process.env.BIRTHDAY_NAME', () => {
+  test('SKARLET_CLAVE usa process.env.SKARLET_CLAVE', () => {
     const authPath = path.join(root, 'src/routes/auth.js');
     const content = fs.readFileSync(authPath, 'utf8');
-    expect(content).toMatch(/process\.env\.BIRTHDAY_NAME/);
+    expect(content).toMatch(/process\.env\.SKARLET_CLAVE/);
   });
 
-  test('SKARLET_FECHA usa process.env.BIRTHDAY_DATE', () => {
+  test('no contiene referencias a BIRTHDAY_NAME ni BIRTHDAY_DATE', () => {
     const authPath = path.join(root, 'src/routes/auth.js');
     const content = fs.readFileSync(authPath, 'utf8');
-    expect(content).toMatch(/process\.env\.BIRTHDAY_DATE/);
+    expect(content).not.toMatch(/BIRTHDAY_NAME|BIRTHDAY_DATE/);
   });
 
   test('no contiene la fecha hardcodeada 2003-03-25', () => {

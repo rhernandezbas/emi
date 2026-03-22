@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const SKARLET_NOMBRE = process.env.BIRTHDAY_NAME;
-const SKARLET_FECHA = process.env.BIRTHDAY_DATE;
+const SKARLET_CLAVE = process.env.SKARLET_CLAVE;
 const EMILY_PASSWORD = process.env.EMILY_PASSWORD || process.env.ORGANIZER_PASSWORD;
 
 // POST /api/auth/skarlet
 router.post('/skarlet', (req, res) => {
-  const { nombre, fecha } = req.body;
-  if (nombre === SKARLET_NOMBRE && fecha === SKARLET_FECHA) {
+  const { clave } = req.body;
+  if (clave && clave === SKARLET_CLAVE) {
     return res.json({ ok: true, rol: 'festejada' });
   }
   return res.status(401).json({ ok: false, error: 'Credenciales incorrectas' });

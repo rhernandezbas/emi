@@ -23,24 +23,24 @@ describe('Fase 3 — skarlet.html: mensaje de error visible con texto correcto',
 });
 
 describe('Fase 3 — /api/auth/skarlet: credenciales incorrectas', () => {
-  test('nombre incorrecto retorna ok:false', async () => {
+  test('clave incorrecta retorna ok:false', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: 'Alguien Random', fecha: process.env.SKARLET_FECHA || '2000-01-01' });
+      .send({ clave: '9999' });
     expect(res.body.ok).toBe(false);
   });
 
-  test('fecha incorrecta retorna ok:false', async () => {
+  test('clave vacía retorna ok:false', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: process.env.BIRTHDAY_NAME || 'Skarlet Daniela', fecha: '1900-12-31' });
+      .send({ clave: '' });
     expect(res.body.ok).toBe(false);
   });
 
-  test('campos vacíos retornan ok:false', async () => {
+  test('sin campo clave retorna ok:false', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: '', fecha: '' });
+      .send({});
     expect(res.body.ok).toBe(false);
   });
 

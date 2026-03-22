@@ -7,7 +7,7 @@ const app = require('../src/server');
 const root = path.resolve(__dirname, '..');
 const publicDir = path.join(root, 'public');
 
-describe('Fase 2 — /skarlet.html: formulario de acceso con nombre y fecha', () => {
+describe('Fase 2 — /skarlet.html: formulario de acceso con clave', () => {
   let html;
 
   beforeAll(() => {
@@ -20,13 +20,8 @@ describe('Fase 2 — /skarlet.html: formulario de acceso con nombre y fecha', ()
     expect(fs.existsSync(path.join(publicDir, 'skarlet.html'))).toBe(true);
   });
 
-  test('tiene campo nombre (skarletNombre)', () => {
-    expect(html).toMatch(/id="skarletNombre"/);
-  });
-
-  test('tiene campo fecha de nacimiento (skarletFecha)', () => {
-    expect(html).toMatch(/id="skarletFecha"/);
-    expect(html).toMatch(/type="date"/);
+  test('tiene campo clave (skarletClave)', () => {
+    expect(html).toMatch(/id="skarletClave"/);
   });
 
   test('tiene botón de login (btnSkarletLogin)', () => {
@@ -72,20 +67,19 @@ describe('Fase 2 — separación: admin.html existe como página independiente',
   });
 });
 
-describe('Fase 2 — /api/auth/skarlet: autenticación correcta', () => {
-  test('POST con credenciales correctas retorna ok:true', async () => {
+describe('Fase 2 — /api/auth/skarlet: autenticación por clave', () => {
+  test('POST con clave correcta retorna ok:true', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: process.env.SKARLET_NOMBRE || 'Skarlet Daniela', fecha: process.env.SKARLET_FECHA || '2000-01-01' });
-    // Puede ser ok:true o ok:false — lo importante es que responde JSON
+      .send({ clave: process.env.SKARLET_CLAVE || '4567' });
     expect(res.status).not.toBe(404);
     expect(res.body).toHaveProperty('ok');
   });
 
-  test('POST con credenciales incorrectas retorna ok:false', async () => {
+  test('POST con clave incorrecta retorna ok:false', async () => {
     const res = await request(app)
       .post('/api/auth/skarlet')
-      .send({ nombre: 'nadie', fecha: '1900-01-01' });
+      .send({ clave: '0000' });
     expect([200, 401]).toContain(res.status);
     expect(res.body.ok).toBe(false);
   });

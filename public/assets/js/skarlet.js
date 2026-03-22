@@ -21,15 +21,14 @@ const btnCerrar    = document.getElementById('btnCerrar');
 
 // ── Login Skarlet ──
 document.getElementById('btnSkarletLogin').addEventListener('click', async () => {
-  const nombre = document.getElementById('skarletNombre').value.trim();
-  const fecha  = document.getElementById('skarletFecha').value;
-  const err    = document.getElementById('skarletError');
+  const clave = document.getElementById('skarletClave').value.trim();
+  const err   = document.getElementById('skarletError');
   err.style.display = 'none';
   try {
     const res  = await fetch('/api/auth/skarlet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, fecha }),
+      body: JSON.stringify({ clave }),
     });
     const data = await res.json();
     if (data.ok) {

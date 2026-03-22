@@ -12,5 +12,20 @@
       "HERMES_TRACK/separar-tres-p-ginas-por-rol/tracker.md",
       "public/index.html"
     ]
+  },
+  {
+    "feature_slug": "autenticacion-skarlet-clave",
+    "finished_at": "2026-03-22",
+    "modules": [
+      "HERMES_TRACK/.active",
+      "docker-compose.yml",
+      "public/assets/js/skarlet.js",
+      "public/skarlet.html",
+      "src/routes/auth.js",
+      "tests/fase2.test.js",
+      "tests/fix-inicio.test.js",
+      "tests/separar-roles-fase2.test.js",
+      "tests/separar-roles-fase3.test.js"
+    ]
   }
 ]

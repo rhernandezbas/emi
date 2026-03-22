@@ -13,8 +13,7 @@ services:
       - DB_NAME=emi
       - DB_USER=emi
       - DB_PASSWORD=${DB_PASSWORD}
-      - BIRTHDAY_NAME=${BIRTHDAY_NAME}
-      - BIRTHDAY_DATE=${BIRTHDAY_DATE}
+      - SKARLET_CLAVE=${SKARLET_CLAVE}
       - EMILY_PASSWORD=${EMILY_PASSWORD}
     depends_on:
       emi-db:
