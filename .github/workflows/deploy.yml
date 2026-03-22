@@ -26,7 +26,8 @@ jobs:
       - name: Deploy
         run: |
           cd /opt/apps/emi
-          docker compose --env-file .env up -d --force-recreate emi-app
+          docker compose --env-file .env down emi-app || true
+          docker compose --env-file .env up -d emi-app
 
       - name: Verificar salud
         run: |
