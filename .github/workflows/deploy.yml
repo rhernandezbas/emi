@@ -12,22 +12,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: |
-          docker build -t emi-app:latest .
-          docker tag emi-app:latest emi-app:${{ github.sha }}
-
-      - name: Sync config to deploy dir
+      - name: Sync files to deploy dir
         run: |
           mkdir -p /opt/apps/emi
-          cp docker-compose.yml /opt/apps/emi/docker-compose.yml
-          cp sql/schema.sql /opt/apps/emi/init.sql
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            ./ /opt/apps/emi/
 
       - name: Deploy
         run: |
           cd /opt/apps/emi
-          docker compose --env-file .env down emi-app || true
-          docker compose --env-file .env up -d emi-app
+          docker compose --env-file .env up -d --build
 
       - name: Verificar salud
         run: |
