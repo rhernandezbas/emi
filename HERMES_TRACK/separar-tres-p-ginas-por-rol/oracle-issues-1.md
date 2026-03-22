@@ -1,2 +1,3 @@
+# Oracle Classifications — Fase 1
 
-## Aceptado: hermes_verify_step tiene un bug: muestra tests fallando en el output (2 failed) pero devuelve "Tests all pass". Los tests separar-roles-fase1.test.js fallan correctamente en: "existe assets/js/skarlet.js" y "existe assets/js/admin.js" — ambos son behavior_anchored. La implementación no existe aún (skarlet.js y admin.js no existen en public/assets/js/).
+- existe assets/js/skarlet.js | behavior_anchored | verifica que el JS de skarlet existe\nexiste assets/js/admin.js | behavior_anchored | verifica que el JS de admin existe

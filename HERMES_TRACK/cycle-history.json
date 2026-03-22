@@ -3,5 +3,14 @@
     "feature_slug": "fix-fix-bugs-frontend",
     "finished_at": "2026-03-18",
     "modules": null
+  },
+  {
+    "feature_slug": "separar-tres-p-ginas-por-rol",
+    "finished_at": "2026-03-22",
+    "modules": [
+      "HERMES_TRACK/separar-tres-p-ginas-por-rol/oracle-issues-1.md",
+      "HERMES_TRACK/separar-tres-p-ginas-por-rol/tracker.md",
+      "public/index.html"
+    ]
   }
 ]

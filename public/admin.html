@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel organizadora — Caja de Cartas</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ── Pantalla de acceso ── -->
+    <div id="accesoScreen" class="acceso-screen">
+      <div class="header">
+        <h1>🔐 Panel organizadora</h1>
+        <p>Ingresá tu contraseña para ver todas las cartas</p>
+      </div>
+      <div class="acceso-form visible" id="formAdmin">
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="adminPassword" placeholder="••••••••" />
+        </div>
+        <p id="adminError" style="color:#e87fa0;margin:8px 0;display:none;">Contraseña incorrecta.</p>
+        <button class="btn" id="btnAdminLogin">Ingresar 🔑</button>
+      </div>
+    </div>
+
+    <!-- ── Panel con tabla ── -->
+    <div id="panelAdmin" style="display:none;">
+      <div class="header">
+        <h1>📋 Todas las cartas</h1>
+        <p>Panel de administración</p>
+      </div>
+      <p id="tablaVacia" style="display:none;color:#a06070;text-align:center;">Aún no hay cartas enviadas.</p>
+      <table style="width:100%;border-collapse:collapse;margin-top:16px;">
+        <thead>
+          <tr style="background:#f8c8d4;">
+            <th style="padding:8px;text-align:left;">#</th>
+            <th style="padding:8px;text-align:left;">Nombre</th>
+            <th style="padding:8px;text-align:left;">Color</th>
+            <th style="padding:8px;text-align:left;">Foto</th>
+            <th style="padding:8px;text-align:left;">Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

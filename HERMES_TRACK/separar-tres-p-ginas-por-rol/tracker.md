@@ -25,12 +25,12 @@
 
 ## Fase 1 — Invitada accede a la página de escribir carta
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -39,12 +39,12 @@
 
 ## Fase 2 — Skarlet accede a su página y se autentica
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -53,12 +53,12 @@
 
 ## Fase 3 — Skarlet ingresa credenciales incorrectas
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -67,12 +67,12 @@
 
 ## Fase 4 — Organizadora accede a su panel
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -81,12 +81,12 @@
 
 ## Fase 5 — Organizadora ingresa contraseña incorrecta
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -95,12 +95,12 @@
 
 ## Fase 6 — index.html redirige o enlaza a las tres páginas
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
@@ -109,12 +109,12 @@
 
 ## Fase 7 — Cada página tiene su propio archivo JS independiente
 
-- [ ] 🔴 RED — test escrito y fallando
-- [ ] 🟢 GREEN — implementación mínima que pasa el test
-- [ ] 🔵 REFACTOR — código limpio, tests siguen pasando
-- [ ] 🔍 EXPERT: security-expert
-- [ ] 🔍 EXPERT: test-quality-expert
-- [ ] ✅ REVIEW — skill aprueba el código
+- [x] 🔴 RED — test escrito y fallando
+- [x] 🟢 GREEN — implementación mínima que pasa el test
+- [x] 🔵 REFACTOR — código limpio, tests siguen pasando
+- [x] 🔍 EXPERT: security-expert
+- [x] 🔍 EXPERT: test-quality-expert
+- [x] ✅ REVIEW — skill aprueba el código
 
 **Tiempo:** —
 **Skill output:** —
