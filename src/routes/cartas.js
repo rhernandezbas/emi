@@ -28,6 +28,23 @@ router.post('/', upload.single('foto'), comprimirFoto, async (req, res) => {
   }
 });
 
+// DELETE /api/cartas/:id — solo organizadora
+router.delete('/:id', async (req, res) => {
+  const rol = req.headers['x-rol'];
+  if (rol !== 'organizadora') {
+    return res.status(401).json({ ok: false, error: 'No autorizado' });
+  }
+  try {
+    const [result] = await db.execute('DELETE FROM cartas WHERE id = ?', [req.params.id]);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ ok: false, error: 'Carta no encontrada' });
+    }
+    return res.json({ ok: true });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: 'Error al eliminar' });
+  }
+});
+
 // GET /api/cartas — protegido
 router.get('/', requireAuth, async (req, res) => {
   try {

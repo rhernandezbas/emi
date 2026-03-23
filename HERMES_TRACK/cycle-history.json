@@ -27,5 +27,15 @@
       "tests/separar-roles-fase2.test.js",
       "tests/separar-roles-fase3.test.js"
     ]
+  },
+  {
+    "feature_slug": "organizadora-eliminar-carta",
+    "finished_at": "2026-03-23",
+    "modules": [
+      "HERMES_TRACK/.active",
+      "public/admin.html",
+      "public/assets/js/admin.js",
+      "src/routes/cartas.js"
+    ]
   }
 ]

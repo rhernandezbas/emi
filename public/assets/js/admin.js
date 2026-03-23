@@ -56,14 +56,30 @@ async function mostrarPanel() {
   }
   cartas.forEach((carta, i) => {
     const tr = document.createElement('tr');
+    tr.dataset.id = carta.id;
     tr.innerHTML = `
       <td>${i + 1}</td>
       <td>${escapeHtml(carta.nombre_remitente)}</td>
       <td>${escapeHtml(carta.color_sobre)}</td>
       <td>${carta.foto_url ? '✓' : '–'}</td>
       <td>${carta.fecha_creacion ? new Date(carta.fecha_creacion).toLocaleDateString('es-AR') : '–'}</td>
+      <td><button class="btn-eliminar" data-id="${carta.id}">🗑</button></td>
     `;
     tbody.appendChild(tr);
+  });
+
+  tbody.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.btn-eliminar');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    const res = await fetch(`/api/cartas/${id}`, {
+      method: 'DELETE',
+      headers: { 'x-rol': 'organizadora' },
+    });
+    const data = await res.json();
+    if (data.ok) {
+      btn.closest('tr').remove();
+    }
   });
 }
 
